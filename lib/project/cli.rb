@@ -19,7 +19,7 @@ class Project::CLI
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the number of the warrior you wish to challenge or type exit to enter:"
+      puts "Enter the number of the warrior you wish to challenge or type list to see opponents or type exit:"
       input = gets.strip.downcase
       case input
       when "1"
@@ -28,6 +28,10 @@ class Project::CLI
         puts "More info on fighter 2..."
       when "3"
         puts "More info on fighter 3..."
+      when "list"
+        list_characters
+      else
+        puts "It's Over 9,000!, type list or exit"
     end
    end
   end
