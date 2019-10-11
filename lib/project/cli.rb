@@ -17,9 +17,9 @@ class Project::CLI
   end
   
   def menu
-    puts "Enter the number of the warrior you wish to challenge or type exit to enter:"
-     input = nil
-     while input != "exit"
+    input = nil
+    while input != "exit"
+      puts "Enter the number of the warrior you wish to challenge or type exit to enter:"
       input = gets.strip.downcase
       case input
       when "1"
