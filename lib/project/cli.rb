@@ -22,7 +22,11 @@ class Project::CLI
     while input != "exit"
       puts "Enter the number of the warrior you wish to challenge or type list to see opponents or type exit:"
       input = gets.strip.downcase
-      case input
+      # if input.to_i > 0
+      #   puts @project[input.to_i-1]
+      # elsif input == "list"
+       #list_characters
+       case input
       when "1"
         puts "More info on fighter 1..."
       when "2"
@@ -41,4 +45,3 @@ class Project::CLI
     puts "See you next time on Dragonball Z!"
   end  
 end
-  
