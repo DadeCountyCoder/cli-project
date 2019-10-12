@@ -9,11 +9,11 @@ class Project::CLI
   end
   
   def list_characters
-  #   puts <<-DOC
-  #     1.Goku
-  #     2.Vegeta
-  #     3.Frieza
-  #   DOC
+    puts <<-DOC
+      1.Goku
+      2.Vegeta
+      3.Frieza
+    DOC
      @project = Project::Dbz.today
   end
   

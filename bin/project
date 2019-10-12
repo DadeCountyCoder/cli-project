@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-
+require "bundler/setup"
+#require "project"
 require './lib/project' 
 
 Project::CLI.new.call
