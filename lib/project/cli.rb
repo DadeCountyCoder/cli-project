@@ -14,7 +14,7 @@ class Project::CLI
       2.Vegeta
       3.Frieza
     DOC
-     @project = Project::Dbz.today
+     @project = Project::Dbz
   end
   
   def menu
@@ -28,11 +28,11 @@ class Project::CLI
        #list_characters
        case input
       when "1"
-        puts "More info on fighter 1..."
+        puts "Race: Saiyan, Planet: Earth, Alias :Goku Son, Kakarot!"
       when "2"
-        puts "More info on fighter 2..."
+        puts "Race: Saiyan, Planet: Sandala, Alias:Prince Vegeta, Prince of all Saiyans!"
       when "3"
-        puts "More info on fighter 3..."
+        puts "Race: Frieza, Planet: frieza, Alias:Lord Frieza, Emperor Frieza"
       when "list"
         list_characters
       else
@@ -43,5 +43,5 @@ class Project::CLI
  
   def goodbye
     puts "See you next time on Dragonball Z!"
-  end  
+  end
 end
