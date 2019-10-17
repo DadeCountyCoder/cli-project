@@ -1,47 +1,52 @@
 #Our CLI Controller
+require 'nokogiri'
+require 'open-uri'
+
 class Project::CLI
-  
   def call
-    puts "Welcome Z Fighterz:"
-    list_characters
+    puts "Welcome Z Fighterz: Enter a number based on the categories below"
+    list_categories
     menu
-    goodbye
   end
-  
-  def list_characters
+
+  def list_categories
     puts <<-DOC
-      1.Goku
-      2.Vegeta
-      3.Frieza
+      1. Characters
+      2. Sagas
+      3. Films
+      4. Manga Volume
+      5. Collectibles
     DOC
-     @project = Project::Dbz
   end
-  
+
   def menu
-    input = nil
-    while input != "exit"
-      puts "Enter the number of the warrior you wish to challenge or type list to see opponents or type exit:"
-      input = gets.strip.downcase
-      # if input.to_i > 0
-      #   puts @project[input.to_i-1]
-      # elsif input == "list"
-       #list_characters
-       case input
-      when "1"
-        puts "Race: Saiyan, Planet: Earth, Alias :Goku Son, Kakarot!"
-      when "2"
-        puts "Race: Saiyan, Planet: Sandala, Alias:Prince Vegeta, Prince of all Saiyans!"
-      when "3"
-        puts "Race: Frieza, Planet: frieza, Alias:Lord Frieza, Emperor Frieza"
-      when "list"
-        list_characters
+    puts 'Enter the number of the warrior you wish to challenge or type list to see opponents or type exit:'
+    input = gets.chomp
+
+    if input == 'exit'
+      puts 'See you next time on Dragonball Z!'
+    elsif input.to_i.is_a? Numeric
+      if input.to_i.between?(1, 5)
+        get_data(input.to_i)
       else
-        puts "It's Over 9,000!, type list or exit"
+        puts 'Select a number between 1 and 5 or type exit'
+        list_categories
+      end
+      menu
+    else
+      puts 'Select a number between 1 and 5 or type exit'
+      list_categories
+      menu
     end
-   end
   end
- 
-  def goodbye
-    puts "See you next time on Dragonball Z!"
+
+  def get_data(category)
+    categories = ['Characters', 'Sagas', 'Films', 'Manga_Volumes', 'Collectibles']
+    puts 'Getting trending pages'
+    html = open("https://dragonball.fandom.com/wiki/Category:#{categories[category - 1]}")
+    doc = Nokogiri::HTML(html)
+    figcaptions = doc.css('li.category-page__trending-page a figcaption') 
+    figcaption_texts = figcaptions.map { |figcaption| figcaption.text }
+    puts figcaption_texts
   end
 end
