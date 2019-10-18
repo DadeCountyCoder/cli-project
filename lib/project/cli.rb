@@ -20,7 +20,7 @@ class Project::CLI
   end
 
   def menu
-    puts 'Enter the number of the warrior you wish to challenge or type list to see opponents or type exit:'
+    puts 'Enter a # from 1-5 or list and enjoy:'
     input = gets.chomp
 
     if input == 'exit'
