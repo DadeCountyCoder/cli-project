@@ -1,10 +1,13 @@
+#move requies into gemfile or gemspec
 #Our CLI Controller
-require 'nokogiri'
-require 'open-uri'
+# require 'nokogiri'
+# require 'open-uri'
+require 'pry-nav'
 
 class Project::CLI
   def call
     puts "Welcome Z Fighterz: Enter a number based on the categories below"
+    puts
     list_categories
     menu
   end
@@ -20,6 +23,7 @@ class Project::CLI
   end
 
   def menu
+    puts
     puts 'Select a number between 1 and 5 or type exit:'
     input = gets.chomp
 
@@ -29,7 +33,7 @@ class Project::CLI
       if input.to_i.between?(1, 5)
         get_data(input.to_i)
       else
-        puts 'Select a number between 1 and 5 or type exit'
+        puts 'Select a number between 1 and 5 or type list or exit'
         list_categories
       end
       menu
@@ -42,11 +46,14 @@ class Project::CLI
 
   def get_data(category)
     categories = ['Characters', 'Sagas', 'Films', 'Manga_Volumes', 'Collectibles']
-    puts 'Getting trending pages'
+    puts 'Popular Selections!'
     html = open("https://dragonball.fandom.com/wiki/Category:#{categories[category - 1]}")
     doc = Nokogiri::HTML(html)
-    figcaptions = doc.css('li.category-page__trending-page a figcaption') 
-    figcaption_texts = figcaptions.map { |figcaption| figcaption.text }
-    puts figcaption_texts
+    figcaptions = doc.css('li.category-page__trending-page a figcaption')
+    figcaptions.each_with_index do |figcaption, index|
+      puts "#{index + 1}" ". " "#{figcaption.text}"
+    #binding.pry
+  end
+   # puts figcaption
   end
 end

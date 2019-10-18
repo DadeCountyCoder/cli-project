@@ -8,3 +8,5 @@ module Project
 end
 
 
+require 'nokogiri'
+require 'open-uri'
