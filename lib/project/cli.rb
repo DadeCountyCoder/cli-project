@@ -6,7 +6,7 @@ require 'pry-nav'
 
 class Project::CLI
   def call
-    puts "Welcome Z Fighterz: Enter a number based on the categories below"
+    puts "Welcome Z Fighterz: Please select a number below to view trending items fot that category."
     puts
     list_categories
     menu
@@ -24,7 +24,7 @@ class Project::CLI
 
   def menu
     puts
-    puts 'Select a number between 1 and 5 or type exit:'
+    puts 'Choosing a number 1-5 will change the category for you or type exit:'
     input = gets.chomp
 
     if input == 'exit'
@@ -33,12 +33,12 @@ class Project::CLI
       if input.to_i.between?(1, 5)
         get_data(input.to_i)
       else
-        puts 'Select a number between 1 and 5 or type list or exit'
+        puts 'Please enjoy the Trending Categories'
         list_categories
       end
       menu
     else
-      puts 'Select a number between 1 and 5 or type exit'
+      puts 'Select a number or type exit'
       list_categories
       menu
     end
@@ -46,7 +46,7 @@ class Project::CLI
 
   def get_data(category)
     categories = ['Characters', 'Sagas', 'Films', 'Manga_Volumes', 'Collectibles']
-    puts 'Popular Selections!'
+    puts 'Most Popular!'
     html = open("https://dragonball.fandom.com/wiki/Category:#{categories[category - 1]}")
     doc = Nokogiri::HTML(html)
     figcaptions = doc.css('li.category-page__trending-page a figcaption')
