@@ -6,7 +6,8 @@ require 'pry-nav'
 
 class Project::CLI
   def call
-    puts "Welcome Z Fighterz: Please select a number below to view trending items fot that category."
+    puts "Welcome Z Fighterz: 
+    Please select a number below to view trending items for that category."
     puts
     list_categories
     menu
@@ -33,7 +34,7 @@ class Project::CLI
       if input.to_i.between?(1, 5)
         get_data(input.to_i)
       else
-        puts 'Please enjoy the Trending Categories'
+        puts 'Please enjoy one of these trending categories'
         list_categories
       end
       menu
