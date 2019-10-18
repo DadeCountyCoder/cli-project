@@ -32,7 +32,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2.0)
   project!
-  rake (~> 10.0)
+  rake
   rspec (~> 3.0)
 
 BUNDLED WITH

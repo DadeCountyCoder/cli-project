@@ -20,7 +20,7 @@ class Project::CLI
   end
 
   def menu
-    puts 'Enter a # from 1-5 or list and enjoy:'
+    puts 'Select a number between 1 and 5 or type exit:'
     input = gets.chomp
 
     if input == 'exit'
