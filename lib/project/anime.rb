@@ -1,0 +1,9 @@
+class Project::Anime
+
+
+
+
+
+
+
+end
